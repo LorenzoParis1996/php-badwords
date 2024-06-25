@@ -1,8 +1,19 @@
 <?php
+$myText = "Never gonna give you up
+    Never gonna let you down
+    Never gonna run around and desert you
+    Never gonna make you cry
+    Never gonna say goodbye
+    Never gonna tell a lie and hurt you";
 
-$name = "gigi";
+$textLength = strlen($myText);
+
+$badWord = $_GET["badWord"];
+$censorship = str_replace("$badWord", " *** ", $myText);
+
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -13,12 +24,15 @@ $name = "gigi";
     <title>Bad Words</title>
 </head>
 <body>
-    <h1>ciao</h1>
-    <p>Never gonna give you up
-Never gonna let you down
-Never gonna run around and desert you
-Never gonna make you cry
-Never gonna say goodbye
-Never gonna tell a lie and hurt you <?php echo $name ?></p>
+    <h1>Word Count: <?php echo $textLength ?></h1>
+    <p><?php echo $myText ?></p>
+
+<form action="./index.php" method="GET">
+    <input type="text" name="badWord" id="badWord">
+    <button type="submit">censor bad word</button>
+</form>
+
+<h1> New Word Count: <?php echo strlen($censorship) ?></h1>
+<p><?php echo $censorship ?></p>
 </body>
 </html>
